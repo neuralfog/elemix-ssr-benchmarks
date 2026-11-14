@@ -1,0 +1,220 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>SSR Benchmarks</title>
+<style>
+  :root {
+    --bg: #0b0d12;
+    --panel: #141821;
+    --panel2: #1b202b;
+    --line: #262c3a;
+    --text: #e7ecf4;
+    --dim: #8b93a7;
+    --accent: #6366f1;
+    --good: #34d399;
+    --bad: #f87171;
+    --warn: #fbbf24;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; background: var(--bg); color: var(--text);
+    font: 14px/1.5 ui-sans-serif, system-ui, -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: 1100px; margin: 0 auto; padding: 32px 20px 80px; }
+  header { margin-bottom: 28px; }
+  h1 { font-size: 26px; margin: 0 0 4px; letter-spacing: -0.02em; }
+  h1 .dot { color: var(--accent); }
+  .sub { color: var(--dim); font-size: 13px; }
+  .cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px; margin: 24px 0; }
+  .card { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 16px; position: relative; overflow: hidden; }
+  .card .rank { position: absolute; top: 12px; right: 14px; font-size: 11px; font-weight: 700; color: var(--dim); }
+  .card .name { font-size: 16px; font-weight: 700; display: flex; align-items: center; gap: 8px; }
+  .card .chip { width: 10px; height: 10px; border-radius: 3px; }
+  .card .rt { color: var(--dim); font-size: 11px; margin: 2px 0 12px; text-transform: uppercase; letter-spacing: 0.05em; }
+  .card .stat { display: flex; justify-content: space-between; font-variant-numeric: tabular-nums; padding: 3px 0; }
+  .card .stat span:last-child { font-weight: 600; }
+  .card.win { border-color: var(--accent); box-shadow: 0 0 0 1px var(--accent), 0 8px 30px -12px var(--accent); }
+  .badge { font-size: 10px; padding: 2px 7px; border-radius: 999px; font-weight: 700; }
+  .badge.ok { background: #10361f; color: var(--good); }
+  .badge.partial { background: #3a2f10; color: var(--warn); }
+  .toggle { display: inline-flex; background: var(--panel); border: 1px solid var(--line); border-radius: 10px; padding: 3px; gap: 2px; margin: 8px 0 18px; }
+  .toggle button { background: none; border: 0; color: var(--dim); padding: 7px 14px; border-radius: 7px; cursor: pointer; font: inherit; font-weight: 600; }
+  .toggle button.active { background: var(--accent); color: #fff; }
+  .section-title { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--dim); margin: 32px 0 10px; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { padding: 0; text-align: left; }
+  thead th { font-size: 11px; color: var(--dim); font-weight: 600; text-transform: uppercase; letter-spacing: 0.04em; padding: 8px 10px; border-bottom: 1px solid var(--line); }
+  thead th.num { text-align: right; }
+  tbody td { border-bottom: 1px solid var(--line); }
+  .pname { padding: 10px; font-weight: 600; white-space: nowrap; }
+  .pname small { color: var(--dim); font-weight: 400; }
+  .cell { position: relative; padding: 8px 10px; font-variant-numeric: tabular-nums; }
+  .cell .bar { position: absolute; left: 0; top: 0; bottom: 0; opacity: 0.16; border-radius: 0; }
+  .cell .v { position: relative; display: flex; justify-content: space-between; gap: 10px; align-items: baseline; }
+  .cell .mult { font-size: 11px; color: var(--dim); }
+  .cell.best .val { font-weight: 700; }
+  .cell.best .mult { color: var(--good); }
+  .cell.dnf .val { color: var(--bad); font-weight: 700; }
+  .val { font-weight: 600; }
+  .memrow td { padding: 9px 10px; border-bottom: 1px solid var(--line); vertical-align: middle; }
+  .membar { height: 22px; border-radius: 6px; background: var(--panel2); position: relative; overflow: hidden; min-width: 60px; }
+  .membar .fill { position: absolute; left: 0; top: 0; bottom: 0; border-radius: 6px; }
+  .membar .fill.idle { opacity: 0.45; }
+  .mlabel { font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .foot { color: var(--dim); font-size: 12px; margin-top: 36px; }
+  .err { color: var(--bad); padding: 40px; text-align: center; }
+  a.reload { color: var(--accent); cursor: pointer; text-decoration: none; }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <h1>SSR Benchmarks <span class="dot">●</span></h1>
+    <div class="sub">Server-side render latency &amp; memory · single core · 20 runs/page · <a class="reload" onclick="load()">refresh</a></div>
+  </header>
+  <div id="app"><div class="sub">loading…</div></div>
+</div>
+<script>
+const ORDER = ['hydris', 'asp', 'nextjs', 'nuxt'];
+const RT = { hydris: '.NET AOT · QuickJS', asp: '.NET · Razor', nextjs: 'Bun · React', nuxt: 'Bun · Vue' };
+const COLORS = { hydris: '#6366f1', asp: '#38bdf8', nextjs: '#f472b6', nuxt: '#34d399' };
+const PAGES = [
+  ['lorem-1k', '1 000 paragraphs'],
+  ['lorem-10k', '10 000 paragraphs'],
+  ['lorem-nested-1k', '1 000 deep'],
+  ['lorem-nested-10k', '10 000 deep'],
+  ['lorem-styled-1k', '1 000 styled'],
+  ['lorem-styled-10k', '10 000 styled'],
+];
+let METRIC = 'median';
+let SCOPE = 'full';
+let DATA = [];
+
+function fwName(f) { return { hydris: 'hydris', asp: 'ASP.NET', nextjs: 'Next.js', nuxt: 'Nuxt' }[f] || f; }
+function val(fw, page) {
+  const p = (DATA.find(d => d.framework === fw) || {}).pages?.[page];
+  if (!p || p.crashed || p[METRIC] == null) return null;
+  return p[METRIC];
+}
+function colorFor(ratio) {
+  const h = Math.max(0, 135 - (ratio - 1) * 42);
+  return `hsl(${h} 70% 55%)`;
+}
+
+function render() {
+  const frameworks = ORDER.filter(f => DATA.some(d => d.framework === f));
+  // scope: 1k-only re-derives the whole board over just the 1k pages
+  const activePages = SCOPE === '1k' ? PAGES.filter(([p]) => p.endsWith('-1k')) : PAGES;
+  // geomean of median vs best-per-page → overall rank
+  const geo = {};
+  for (const f of frameworks) {
+    let logsum = 0, n = 0;
+    for (const [pg] of activePages) {
+      const best = Math.min(...frameworks.map(x => val(x, pg) ?? Infinity));
+      const v = val(f, pg);
+      if (v != null && best < Infinity) { logsum += Math.log(v / best); n++; }
+    }
+    geo[f] = n ? Math.exp(logsum / n) : Infinity;
+  }
+  // crashed pages are a failure, not an exclusion: any framework that crashes
+  // ranks below every framework that rendered everything.
+  const crashes = {};
+  for (const f of frameworks) crashes[f] = activePages.filter(([pg]) => val(f, pg) == null).length;
+  const ranked = [...frameworks].sort((a, b) =>
+    (crashes[a] > 0) - (crashes[b] > 0) || crashes[a] - crashes[b] || geo[a] - geo[b]
+  );
+  const rankOf = f => ranked.indexOf(f) + 1;
+  const maxPeak = Math.max(...frameworks.map(f => (DATA.find(d => d.framework === f)?.memory.peakRssMB) || 0));
+
+  let h = '';
+  // cards
+  h += '<div class="cards">';
+  for (const f of ranked) {
+    const d = DATA.find(x => x.framework === f);
+    const g = geo[f];
+    h += `<div class="card ${rankOf(f) === 1 ? 'win' : ''}">
+      <div class="rank">#${rankOf(f)}</div>
+      <div class="name"><span class="chip" style="background:${COLORS[f]}"></span>${fwName(f)}</div>
+      <div class="rt">${RT[f] || ''}</div>
+      <div class="stat"><span>overall</span><span>${crashes[f] > 0 ? `<span style="color:var(--bad)">incomplete · ${crashes[f]} crashed</span>` : (g === Infinity ? '—' : g.toFixed(2) + '×')}</span></div>
+      <div class="stat"><span>peak mem</span><span>${d.memory.peakRssMB.toFixed(0)} MB</span></div>
+      <div class="stat"><span>status</span><span class="badge ${crashes[f] > 0 ? 'partial' : 'ok'}">${crashes[f] > 0 ? 'partial' : 'ok'}</span></div>
+    </div>`;
+  }
+  h += '</div>';
+
+  // toggles
+  h += `<div style="display:flex;gap:10px;flex-wrap:wrap;align-items:center">
+    <div class="toggle">
+      <button class="${SCOPE==='full'?'active':''}" onclick="setScope('full')">Full (1k + 10k)</button>
+      <button class="${SCOPE==='1k'?'active':''}" onclick="setScope('1k')">1k only</button>
+    </div>
+    <div class="toggle">
+      <button class="${METRIC==='median'?'active':''}" onclick="setMetric('median')">Median latency</button>
+      <button class="${METRIC==='p95'?'active':''}" onclick="setMetric('p95')">P95 latency</button>
+    </div>
+  </div>`;
+
+  // latency matrix
+  h += '<table><thead><tr><th>Page</th>';
+  for (const f of frameworks) h += `<th class="num">${fwName(f)}</th>`;
+  h += '</tr></thead><tbody>';
+  for (const [pg, desc] of activePages) {
+    const vals = frameworks.map(f => val(f, pg));
+    const best = Math.min(...vals.filter(v => v != null).map(Number), Infinity);
+    const worst = Math.max(...vals.filter(v => v != null).map(Number), 0);
+    h += `<tr><td class="pname">${pg}<br><small>${desc}</small></td>`;
+    for (let i = 0; i < frameworks.length; i++) {
+      const v = vals[i];
+      if (v == null) { h += `<td class="cell dnf"><div class="v"><span class="val">crashed</span></div></td>`; continue; }
+      const ratio = v / best;
+      const w = worst > 0 ? Math.max(4, (v / worst) * 100) : 4;
+      h += `<td class="cell ${ratio === 1 ? 'best' : ''}">
+        <div class="bar" style="width:${w}%;background:${colorFor(ratio)}"></div>
+        <div class="v"><span class="val">${v.toFixed(v < 10 ? 2 : 1)}<span style="color:var(--dim);font-weight:400"> ms</span></span><span class="mult">${ratio.toFixed(2)}×</span></div>
+      </td>`;
+    }
+    h += '</tr>';
+  }
+  h += '</tbody></table>';
+
+  // memory
+  h += '<div class="section-title">Running app memory (RSS) — idle vs peak under load</div>';
+  h += '<table><tbody>';
+  for (const f of ranked) {
+    const d = DATA.find(x => x.framework === f);
+    const idleW = (d.memory.idleRssMB / maxPeak) * 100;
+    const peakW = (d.memory.peakRssMB / maxPeak) * 100;
+    h += `<tr class="memrow">
+      <td class="pname" style="width:120px">${fwName(f)}</td>
+      <td style="width:55%"><div class="membar"><div class="fill" style="width:${peakW}%;background:${COLORS[f]}"></div><div class="fill idle" style="width:${idleW}%;background:${COLORS[f]}"></div></div></td>
+      <td class="mlabel" style="text-align:right">${d.memory.idleRssMB.toFixed(0)} MB <span style="color:var(--dim)">idle</span> → <b>${d.memory.peakRssMB.toFixed(0)} MB</b> <span style="color:var(--dim)">peak</span></td>
+    </tr>`;
+  }
+  h += '</tbody></table>';
+
+  const when = DATA.map(d => d.ranAt).sort().pop();
+  h += `<div class="foot">Lower is better. Each cell = ${METRIC} of 20 single requests, warm server, pinned to core 0, no compression, no view cache. Overall = geometric mean vs the fastest per page. <b>crashed</b> = the framework crashed rendering that page. Ran ${when ? new Date(when).toLocaleString() : ''}.</div>`;
+
+  document.getElementById('app').innerHTML = h;
+}
+
+function setMetric(m) { METRIC = m; render(); }
+function setScope(s) { SCOPE = s; render(); }
+async function load() {
+  try {
+    const r = await fetch('/api/results');
+    DATA = await r.json();
+    if (!DATA.length) { document.getElementById('app').innerHTML = '<div class="err">No artifacts yet. Run <code>bun harness.ts</code> first.</div>'; return; }
+    render();
+  } catch (e) {
+    document.getElementById('app').innerHTML = '<div class="err">Failed to load results: ' + e.message + '</div>';
+  }
+}
+load();
+</script>
+</body>
+</html>

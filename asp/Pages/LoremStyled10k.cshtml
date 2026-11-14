@@ -1,0 +1,11 @@
+@page "/lorem-styled-10k"
+<style>
+    .lorem { display: flex; flex-direction: column; gap: 8px; padding: 24px; max-width: 720px; margin: 0 auto; background: #f1f5f9; }
+    .para { margin: 0; padding: 12px 16px; border-left: 3px solid #6366f1; border-radius: 6px; background: #ffffff; color: #1e293b; font: 14px/1.6 system-ui, sans-serif; }
+</style>
+<div class="lorem">
+    @for (var i = 0; i < 10000; i++)
+    {
+        <partial name="_LoremParagraph" model="new LoremItem(i, Lorem.Text)" />
+    }
+</div>

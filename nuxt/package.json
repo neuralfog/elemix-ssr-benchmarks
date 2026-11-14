@@ -1,0 +1,13 @@
+{
+  "name": "nuxt-bench",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "preview": "node .output/server/index.mjs",
+    "ssr": "nuxt build && PORT=3000 taskset -c 0 bun run .output/server/index.mjs"
+  },
+  "devDependencies": {
+    "nuxt": "^4.6.4"
+  }
+}

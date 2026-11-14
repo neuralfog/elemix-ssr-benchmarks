@@ -1,0 +1,7 @@
+@page "/lorem-1k"
+<div class="lorem">
+    @for (var i = 0; i < 1000; i++)
+    {
+        <partial name="_LoremParagraph" model="new LoremItem(i, Lorem.Text)" />
+    }
+</div>

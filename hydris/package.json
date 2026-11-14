@@ -1,0 +1,20 @@
+{
+    "name": "hydris-bench",
+    "private": true,
+    "imports": {
+        "#views/*": "./Views/*"
+    },
+    "scripts": {
+        "typecheck": "tsc --noEmit"
+    },
+    "dependencies": {
+        "@neuralfog/elemix": "link:../../elemix/packages/elemix",
+        "@neuralfog/elemix-ssr": "link:../../elemix/packages/elemix-ssr"
+    },
+    "devDependencies": {
+        "@biomejs/biome": "2.5.3",
+        "@neuralfog/elemix-analyzer": "link:../../elemix/packages/analyzer",
+        "@neuralfog/elemix-template-formatter": "link:../../elemix/packages/formatter",
+        "typescript": "7.0.2"
+    }
+}

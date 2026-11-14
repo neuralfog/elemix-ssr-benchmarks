@@ -1,0 +1,18 @@
+{
+  "version": 1,
+  "isRoot": true,
+  "tools": {
+    "hydris.cli": {
+      "version": "0.1.0",
+      "commands": [
+        "hydris"
+      ]
+    },
+    "hydris.build": {
+      "version": "0.1.0",
+      "commands": [
+        "hydris-build"
+      ]
+    }
+  }
+}

@@ -1,0 +1,53 @@
+env:
+  DOTNET_ENVIRONMENT: Development
+  ELEMIX_COMPILER: ../../elemix/packages/compiler/target/release/elemix-compiler
+
+tasks:
+  setup:
+    run: [install, tools]
+
+  install:
+    run: pnpm install
+
+  tools:
+    run: dotnet tool restore
+
+  pack:
+    run: |
+      cd ../../elemix/packages/hydris
+      rm -rf artifacts
+      for p in Hydris Hydris.QuickJs Hydris.Generators Hydris.Build Hydris.Cli; do
+        dotnet pack "$p/$p.csproj" -c Release -o ./artifacts
+      done
+
+  typecheck:
+    run: pnpm typecheck
+
+  lint:
+    parallel: [lint-scripts, elemix-format, elemix-analyze, format-csharp]
+
+  lint-scripts:
+    run: pnpm exec biome check Views
+
+  elemix-format:
+    run: pnpm exec etf --dirs Views
+
+  elemix-analyze:
+    run: pnpm exec ea --dirs Views --root .
+
+  format-csharp:
+    run: dotnet format Hydris.Bench.csproj --verify-no-changes
+
+  lint-fix:
+    run: >
+      pnpm exec biome check --write Views &&
+      pnpm exec etf --dirs Views --write &&
+      dotnet format Hydris.Bench.csproj
+
+  publish:
+    run: |
+      dotnet hydris-build . -O
+      dotnet publish -c Release -r linux-x64 -o bin/aot
+
+  ssr:
+    run: [publish, taskset -c 0 ./bin/aot/hydris-bench]

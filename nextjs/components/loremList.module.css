@@ -1,0 +1,9 @@
+.lorem {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    padding: 24px;
+    max-width: 720px;
+    margin: 0 auto;
+    background: #f1f5f9;
+}
