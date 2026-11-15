@@ -1,5 +1,5 @@
 env:
-  DOTNET_ENVIRONMENT: Development
+  DOTNET_ENVIRONMENT: Production
 
 tasks:
   setup:
@@ -15,15 +15,15 @@ tasks:
     run: pnpm typecheck
 
   lint:
-    parallel: [lint-scripts, elemix-format, elemix-analyze, format-csharp]
+    parallel: [lint-scripts, format, analyze, format-csharp]
 
   lint-scripts:
     run: pnpm exec biome check Views
 
-  elemix-format:
+  format:
     run: pnpm exec etf --dirs Views
 
-  elemix-analyze:
+  analyze:
     run: pnpm exec ea --dirs Views --root .
 
   format-csharp:
@@ -38,7 +38,7 @@ tasks:
   publish:
     run: |
       dotnet hydris-build . -O
-      dotnet publish -c Release -r linux-x64 -o bin/aot
+      dotnet publish -c "${DOTNET_CONFIGURATION:-Release}" -r "${DOTNET_RID:-linux-x64}" -o bin/aot
 
   ssr:
     run: [publish, taskset -c 0 ./bin/aot/hydris-bench]
