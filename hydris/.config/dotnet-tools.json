@@ -3,13 +3,13 @@
   "isRoot": true,
   "tools": {
     "hydris.cli": {
-      "version": "0.1.0",
+      "version": "0.9.6",
       "commands": [
         "hydris"
       ]
     },
     "hydris.build": {
-      "version": "0.1.0",
+      "version": "0.9.6",
       "commands": [
         "hydris-build"
       ]

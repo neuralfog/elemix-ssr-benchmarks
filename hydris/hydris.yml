@@ -1,6 +1,5 @@
 env:
   DOTNET_ENVIRONMENT: Development
-  ELEMIX_COMPILER: ../../elemix/packages/compiler/target/release/elemix-compiler
 
 tasks:
   setup:
@@ -11,14 +10,6 @@ tasks:
 
   tools:
     run: dotnet tool restore
-
-  pack:
-    run: |
-      cd ../../elemix/packages/hydris
-      rm -rf artifacts
-      for p in Hydris Hydris.QuickJs Hydris.Generators Hydris.Build Hydris.Cli; do
-        dotnet pack "$p/$p.csproj" -c Release -o ./artifacts
-      done
 
   typecheck:
     run: pnpm typecheck

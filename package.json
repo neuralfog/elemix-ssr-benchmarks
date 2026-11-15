@@ -13,6 +13,6 @@
     "clean": "rm -rf nextjs/node_modules nextjs/.next nuxt/node_modules nuxt/.nuxt nuxt/.output hydris/node_modules hydris/bin hydris/obj hydris/ssr hydris/.hydris-build hydris/public/_elemix asp/bin asp/obj ../elemix/packages/hydris/artifacts",
     "reset": "pnpm run clean && pnpm run bootstrap",
     "bench": "bun harness.ts",
-    "dashboard": "bun dashboard/server.ts"
+    "dash": "bun dashboard/server.ts"
   }
 }

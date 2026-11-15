@@ -9,21 +9,24 @@ importers:
   .:
     dependencies:
       '@neuralfog/elemix':
-        specifier: link:../../elemix/packages/elemix
-        version: link:../../elemix/packages/elemix
+        specifier: 0.9.6
+        version: 0.9.6
       '@neuralfog/elemix-ssr':
-        specifier: link:../../elemix/packages/elemix-ssr
-        version: link:../../elemix/packages/elemix-ssr
+        specifier: 0.9.6
+        version: 0.9.6
     devDependencies:
       '@biomejs/biome':
         specifier: 2.5.3
         version: 2.5.3
       '@neuralfog/elemix-analyzer':
-        specifier: link:../../elemix/packages/analyzer
-        version: link:../../elemix/packages/analyzer
+        specifier: 0.9.6
+        version: 0.9.6
+      '@neuralfog/elemix-compiler':
+        specifier: 0.9.6
+        version: 0.9.6
       '@neuralfog/elemix-template-formatter':
-        specifier: link:../../elemix/packages/formatter
-        version: link:../../elemix/packages/formatter
+        specifier: 0.9.6
+        version: 0.9.6
       typescript:
         specifier: 7.0.2
         version: 7.0.2
@@ -86,6 +89,196 @@ packages:
     engines: {node: '>=14.21.3'}
     cpu: [x64]
     os: [win32]
+
+  '@neuralfog/elemix-analyzer-darwin-arm64@0.9.6':
+    resolution: {integrity: sha512-DGuZ7UdvS0xnYJXppFxKu0/u4wPNPgiw2wiYS0iXF5/E6cjCAD6s8auYqg9baHrbjIGbQgl0xlBMf/vmzV1fMA==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@neuralfog/elemix-analyzer-darwin-x64@0.9.6':
+    resolution: {integrity: sha512-m2aK5R3zl7PYCcdb9a64j7XEOybVKq0Q05pIK6SBrvWMkc1bExE8wHB0n7zTFmL3ye7o2U/q/AOXly49SI9DEg==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@neuralfog/elemix-analyzer-linux-arm64@0.9.6':
+    resolution: {integrity: sha512-lYZbYM243qmCtAUHNXe6MXSv6DzNPql+61vYtBlAGcNC8hnL/Blrb4VuFLNP1AgmmiohzuFCHm1T52zRbADqYg==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@neuralfog/elemix-analyzer-linux-x64@0.9.6':
+    resolution: {integrity: sha512-G9vXv54Gvc4z73UsZuG+Bjf7a5Dl0wX/+mA9jXnQPnJJud48u0iwXtZEth550NXzKS6Kfwq1joKqG+zL8ltLFw==}
+    cpu: [x64]
+    os: [linux]
+
+  '@neuralfog/elemix-analyzer-win32-arm64@0.9.6':
+    resolution: {integrity: sha512-gFcO+vFYes9MDBW6oxTfRK397McbDjW0WeJk7Gb8yTLaWbvoha/ef1t7Qb63IlcdRoO1finoaKPooahux9gpHw==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@neuralfog/elemix-analyzer-win32-x64@0.9.6':
+    resolution: {integrity: sha512-NynDxhU86fGuxC1aXmP0l1WmCjGz0QlwrJyCUUhNPlNeLXRqCqHVGcycMX9LZJbRGvtKY+9kbKV2X1hqBqOwig==}
+    cpu: [x64]
+    os: [win32]
+
+  '@neuralfog/elemix-analyzer@0.9.6':
+    resolution: {integrity: sha512-RxAaC+7Fskbsf7savzEjBaR79AfoD7smXN/UStnKXHhEtcIoUwXHcvYuXbWAU1LK0oEceFeHJzXyAOF0hDH1Uw==}
+    hasBin: true
+
+  '@neuralfog/elemix-compiler-darwin-arm64@0.9.6':
+    resolution: {integrity: sha512-wfFuWmNSylnNYP48wf3gdtnoNgXsZ3QvQRhX1d8IwxzkVWCTPkmMicYiJPzMVRoU924TK0HnfG4S4KztQbxxkA==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@neuralfog/elemix-compiler-darwin-x64@0.9.6':
+    resolution: {integrity: sha512-/s8qS1aADJiDejL94HnIAZHibZLT93zxMo/LGzZTxUeM+TA7TXzGBgY9Mmf7pbHBhltHjcnfoUbxbS3aWod5og==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@neuralfog/elemix-compiler-linux-arm64@0.9.6':
+    resolution: {integrity: sha512-czS7r3CY2ip9Ha49xO2vW8Myxv6QX5QR6wMYJxXoAwv74MwDnNVTSZE/7RGAQLQI6PjkyrP5r83CsCDkIcfm1w==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@neuralfog/elemix-compiler-linux-x64@0.9.6':
+    resolution: {integrity: sha512-+5F8Z/W/WOxTO3l5/aToAh6C8i5RBTFdYIlKdkvQHb3Yjnao9udzotnMOgcJe7m57GZ2pgKp4TtQpc9lrsAy/A==}
+    cpu: [x64]
+    os: [linux]
+
+  '@neuralfog/elemix-compiler-win32-arm64@0.9.6':
+    resolution: {integrity: sha512-KMmW3UX06gehYAmjHPIuRFV10H5Ow7rCzevuJciJlhu9dEv/LtgRzinYNT5vqV/FL689+lmV3hHTk5MQrj3OCw==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@neuralfog/elemix-compiler-win32-x64@0.9.6':
+    resolution: {integrity: sha512-Yu9SbaTie4imktRtQQL0kaaVGa5eurHzKS943LPgJe6ZIMvMPWo9g433KxAVv+lAbrZiFSkdQLoruUIPI7phCA==}
+    cpu: [x64]
+    os: [win32]
+
+  '@neuralfog/elemix-compiler@0.9.6':
+    resolution: {integrity: sha512-jOk4AxbwNZedBUKx5GZ8ertkrXmUxZ1vXjO4J7NuncvAEGrxNMRR+W90zO7ZUvmtrm3mvv38rCaLah7fs9S1KQ==}
+    hasBin: true
+
+  '@neuralfog/elemix-ssr@0.9.6':
+    resolution: {integrity: sha512-Yw1Gj59aRgJhy/ze1ail1pMZz74MVDZYYvQ2fpYFtS6TtvCgPbAayN5WdzNrglH/wFtBn6LazLL/GXt8iA9EgA==}
+
+  '@neuralfog/elemix-template-formatter-darwin-arm64@0.9.6':
+    resolution: {integrity: sha512-QPKgyNhEGTJNhD8KMO0YpvlMHfBV6FCNddp53PE2CxZM2uL5yXxW/1oD09IF6P2gFI8wUo1LWrAZHwc6jcg4mg==}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@neuralfog/elemix-template-formatter-darwin-x64@0.9.6':
+    resolution: {integrity: sha512-Qupx3tk0SSi4YHD3wwcXU2Bqa4k42NSNpPC4HT6DkYY4pYiJZzXJonuIK8Ax6LsrvMRfc8YeTFKNTJ4vomKZGg==}
+    cpu: [x64]
+    os: [darwin]
+
+  '@neuralfog/elemix-template-formatter-linux-arm64@0.9.6':
+    resolution: {integrity: sha512-rTKkv/vA/19RJ9CTLR0SNowmSDA7NonkasBrtA5ynB1lAiRjpV5fiL4CuCE33SBPwz5wZDe6Ebdx5zVzQ6B4zg==}
+    cpu: [arm64]
+    os: [linux]
+
+  '@neuralfog/elemix-template-formatter-linux-x64@0.9.6':
+    resolution: {integrity: sha512-xGoqW1/2XKqD+tPvvrQKXzhgtJkrKGjqswCqf4KjfXduVFgwQ/31rIVxlRDLiEVqCg2uCM7m7gcDf+rTEo6hCg==}
+    cpu: [x64]
+    os: [linux]
+
+  '@neuralfog/elemix-template-formatter-win32-arm64@0.9.6':
+    resolution: {integrity: sha512-rjPRsNbKM8x+aMhz+J+8F4FRQ+kWt1CH/bFjg1lLrxDQPa6s5DJW8ZN+dVHQogbfXAbC33zcVpYQWDjoBjecZA==}
+    cpu: [arm64]
+    os: [win32]
+
+  '@neuralfog/elemix-template-formatter-win32-x64@0.9.6':
+    resolution: {integrity: sha512-dJrSAA4E+xBLPYpQsZGAAroqvTOfEqmEPbL1KHblLpD8URtYAQE+2sUwF5q+7VfwAh23kPh8O6zQA/cQsOsKiA==}
+    cpu: [x64]
+    os: [win32]
+
+  '@neuralfog/elemix-template-formatter@0.9.6':
+    resolution: {integrity: sha512-oYPf/nImg7QaQEBhwojcTvPfD7b60Bjhn1qjGJkic8K7QomhAi0tJTzSuYpMzU8B+TVIFmja5KhAQ0ooh3BNGA==}
+    hasBin: true
+
+  '@neuralfog/elemix@0.9.6':
+    resolution: {integrity: sha512-3JlvIHezMAFHaX12MEfPpbze7KBpKcFdK7+83NyDtjEdFgonBYsbg61EJpLewzX3BikjElO9ltmNr/YZO4qPlw==}
+
+  '@parcel/watcher-android-arm64@2.6.0':
+    resolution: {integrity: sha512-trgpLSCKRC/huFjXX/Smh+0sWe4+YtKfktIToiMl59ghz7z+qkH6kMvNnUbLyRs9N11t8l4svSCs1+5B3rOAhA==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [arm64]
+    os: [android]
+
+  '@parcel/watcher-darwin-arm64@2.6.0':
+    resolution: {integrity: sha512-Y3QV0gl7Q1zbfueunkWIERICbEojQFCgpyG7YqOGNFLsckXyI1xu9mAIUpKY9QBYzBtSkN8dBPwd3yiAO9ovMw==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [arm64]
+    os: [darwin]
+
+  '@parcel/watcher-darwin-x64@2.6.0':
+    resolution: {integrity: sha512-Ohv6OpzhUfKYD7Beb8kDvG0jbIxORCYY1JRdZnaBtnjjkJxgD7ZVL0nw2sCYd0yTMKTvz3nnTnOF3cDifK+kvw==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [x64]
+    os: [darwin]
+
+  '@parcel/watcher-freebsd-x64@2.6.0':
+    resolution: {integrity: sha512-5HmXvDgs8VK+74jF9y9/2FE3/OnlcKmc56tjmSrEuZjpSZOGL+fvAu+HKJBdPs9uwoP2hE6TlSUpXZ/C5jUFmQ==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [x64]
+    os: [freebsd]
+
+  '@parcel/watcher-linux-arm-glibc@2.6.0':
+    resolution: {integrity: sha512-Ps/hui3A+vMbjdqlqAowK2ZL8+BO8dBjxeWXj6npTBs3jx4wWmbPpaLuqwrQrSqIVMCnpWo238bJ1U37GhQOYg==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [arm]
+    os: [linux]
+    libc: [glibc]
+
+  '@parcel/watcher-linux-arm-musl@2.6.0':
+    resolution: {integrity: sha512-9c6AUHgHoG+IY88MRIHupztQiQnrbqHYQjkM2btA+Bf/wQnQMuiD0Wfk1EVv3TlNT3x41uU71rn6E4xh/+zvkw==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [arm]
+    os: [linux]
+    libc: [musl]
+
+  '@parcel/watcher-linux-arm64-glibc@2.6.0':
+    resolution: {integrity: sha512-yHRqS2owEXe6Hic9z6Mh1ECsCd+ODVOGvZDyciqRd21+v+o+DnXMOrw50DSpIG2sb8GPEaPPmfeCAWKPJdq46g==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [glibc]
+
+  '@parcel/watcher-linux-arm64-musl@2.6.0':
+    resolution: {integrity: sha512-WhB2e/V7rqdHHWZusBSPuy5Ei8S6lSz6FE5TKKQz5h3a0O+C+mhY7vxU9b/stqvMb8beLnPY82ZrFTLKs+SrKA==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [arm64]
+    os: [linux]
+    libc: [musl]
+
+  '@parcel/watcher-linux-x64-glibc@2.6.0':
+    resolution: {integrity: sha512-ulGE6x6Oz6iAwg75T8YQSoguBWasniIbX+QWpaYPcCnDOpdWX3k+4xbEYPZVLxOuoJI+svJJPD3sEj8G7lrQ3A==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [x64]
+    os: [linux]
+    libc: [glibc]
+
+  '@parcel/watcher-linux-x64-musl@2.6.0':
+    resolution: {integrity: sha512-tkBYKt7YQrjIJWYDnto2YgO8MRkjlMTSNoRHzsXinBqbLdeOM3L32wPZJvIZxqaLMfSlS/4sUjH/6STVP/XDLw==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [x64]
+    os: [linux]
+    libc: [musl]
+
+  '@parcel/watcher-win32-arm64@2.6.0':
+    resolution: {integrity: sha512-gIZAP23jaHjGWasY/TY6yL7NHFClf0Ga7FN+iINvk+KN94rhm94lYZhFsbYFNcA04/onvGD9kKmiJLJB2HbNwQ==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [arm64]
+    os: [win32]
+
+  '@parcel/watcher-win32-x64@2.6.0':
+    resolution: {integrity: sha512-cA+/pXV2YkfxlIcXOQ5fSWqAzzPyD78/x5qbK/I0vUkrlYHA8TIz+MXjAbGouguKVSI4bOmkTSJ1/poVSsgt+A==}
+    engines: {node: '>= 10.0.0'}
+    cpu: [x64]
+    os: [win32]
+
+  '@parcel/watcher@2.6.0':
+    resolution: {integrity: sha512-7FNeNl8NCE7aINx7WXiKQrPYZWC/hvrTsmk6zmxbI7LTXE7hVek/n8AfVgpe2y82zl3w0HvCHN0bVKMBoJcC0w==}
+    engines: {node: '>= 10.0.0'}
 
   '@typescript/typescript-aix-ppc64@7.0.2':
     resolution: {integrity: sha512-MTKKkWB7p/0E9xi1d1tHtZ5PiLkGEMIq88pK2CubZjOsLtYTLqhgIgi6zepFa+9GHZ6h05NMCkQxGKiPXMxXtQ==}
@@ -207,6 +400,45 @@ packages:
     cpu: [x64]
     os: [win32]
 
+  chokidar@5.0.0:
+    resolution: {integrity: sha512-TQMmc3w+5AxjpL8iIiwebF73dRDF4fBIieAqGn9RGCWaEVwQ6Fb2cGe31Yns0RRIzii5goJ1Y7xbMwo1TxMplw==}
+    engines: {node: '>= 20.19.0'}
+
+  detect-libc@2.1.2:
+    resolution: {integrity: sha512-Btj2BOOO83o3WyH59e8MgXsxEQVcarkUOpEYrubB0urwnN10yQ364rsiByU11nZlqWYZm05i/of7io4mzihBtQ==}
+    engines: {node: '>=8'}
+
+  immutable@5.2.1:
+    resolution: {integrity: sha512-CgXNM1BhKqpMjFHTyqQSk09OWqzHNJ/U4BdeBgXoBdR2DdgBdOSv131cO1/YMgzopqnka3B/i949UaMLEKUxOA==}
+
+  is-extglob@2.1.1:
+    resolution: {integrity: sha512-SbKbANkN603Vi4jEZv49LeVJMn4yGwsbzZworEoyEiutsN3nJYdbO36zfhGJ6QEDpOZIFkDtnq5JRxmvl3jsoQ==}
+    engines: {node: '>=0.10.0'}
+
+  is-glob@4.0.3:
+    resolution: {integrity: sha512-xelSayHH36ZgE7ZWhli7pW34hNbNl8Ojv5KVmkJD4hBdD3th8Tfk9vYasLM+mXWOZhFkgZfxhLSnrwRr4elSSg==}
+    engines: {node: '>=0.10.0'}
+
+  node-addon-api@7.1.1:
+    resolution: {integrity: sha512-5m3bsyrjFWE1xf7nz7YXdN4udnVtXK6/Yfgn5qnahL6bCkf2yKt4k3nuTKAtT4r3IG8JNR2ncsIMdZuAzJjHQQ==}
+
+  picomatch@4.0.7:
+    resolution: {integrity: sha512-qcJu88Q2IWqJsDD529JKMdwGm/dvInW4HvQnRwiH9JtihJvzGOscDtHE3x1pBKeUOTysQ8kVmLnJ2kJu7yhcGA==}
+    engines: {node: '>=12'}
+
+  readdirp@5.1.1:
+    resolution: {integrity: sha512-Kko+Y5XQ6fM+Ce3dq3m9YGxnacYZYl9cA1wZjaF3Vbry2L3i1qVg8+CAgNPsXRArPMUMCaOR7oa9Nqntc43JKA==}
+    engines: {node: '>= 20.19.0'}
+
+  sass@1.103.1:
+    resolution: {integrity: sha512-9icZURbP51S6S0QGoyaeqk9uB06GNWxsFYWfH5RgpFgqK5FA8tJcM3AdVxrZEVJ7dz+L87nG95gBKf4VuaMHGw==}
+    engines: {node: '>=20.19.0'}
+    hasBin: true
+
+  source-map-js@1.2.2:
+    resolution: {integrity: sha512-KGj/8Y43x35aZVDtt+J4mK1hoLGHULMYfSkODJNQjNDC3oW1PqPoxMwo0pLUsWM/UEGzON/NxeHywEfNXNP3Vw==}
+    engines: {node: '>=0.10.0'}
+
   typescript@7.0.2:
     resolution: {integrity: sha512-8FYau96o3NKOhbjKi/qNvG/W5jhzxkbdm5sj9AbZ/5T5sWqn3hJgLfGx27sRKZWTvyzCP8dLRBTf5tBTSRVUNA==}
     engines: {node: '>=16.20.0'}
@@ -247,6 +479,151 @@ snapshots:
     optional: true
 
   '@biomejs/cli-win32-x64@2.5.3':
+    optional: true
+
+  '@neuralfog/elemix-analyzer-darwin-arm64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-analyzer-darwin-x64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-analyzer-linux-arm64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-analyzer-linux-x64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-analyzer-win32-arm64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-analyzer-win32-x64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-analyzer@0.9.6':
+    optionalDependencies:
+      '@neuralfog/elemix-analyzer-darwin-arm64': 0.9.6
+      '@neuralfog/elemix-analyzer-darwin-x64': 0.9.6
+      '@neuralfog/elemix-analyzer-linux-arm64': 0.9.6
+      '@neuralfog/elemix-analyzer-linux-x64': 0.9.6
+      '@neuralfog/elemix-analyzer-win32-arm64': 0.9.6
+      '@neuralfog/elemix-analyzer-win32-x64': 0.9.6
+
+  '@neuralfog/elemix-compiler-darwin-arm64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-compiler-darwin-x64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-compiler-linux-arm64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-compiler-linux-x64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-compiler-win32-arm64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-compiler-win32-x64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-compiler@0.9.6':
+    optionalDependencies:
+      '@neuralfog/elemix-compiler-darwin-arm64': 0.9.6
+      '@neuralfog/elemix-compiler-darwin-x64': 0.9.6
+      '@neuralfog/elemix-compiler-linux-arm64': 0.9.6
+      '@neuralfog/elemix-compiler-linux-x64': 0.9.6
+      '@neuralfog/elemix-compiler-win32-arm64': 0.9.6
+      '@neuralfog/elemix-compiler-win32-x64': 0.9.6
+
+  '@neuralfog/elemix-ssr@0.9.6':
+    dependencies:
+      '@neuralfog/elemix': 0.9.6
+      sass: 1.103.1
+
+  '@neuralfog/elemix-template-formatter-darwin-arm64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-template-formatter-darwin-x64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-template-formatter-linux-arm64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-template-formatter-linux-x64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-template-formatter-win32-arm64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-template-formatter-win32-x64@0.9.6':
+    optional: true
+
+  '@neuralfog/elemix-template-formatter@0.9.6':
+    optionalDependencies:
+      '@neuralfog/elemix-template-formatter-darwin-arm64': 0.9.6
+      '@neuralfog/elemix-template-formatter-darwin-x64': 0.9.6
+      '@neuralfog/elemix-template-formatter-linux-arm64': 0.9.6
+      '@neuralfog/elemix-template-formatter-linux-x64': 0.9.6
+      '@neuralfog/elemix-template-formatter-win32-arm64': 0.9.6
+      '@neuralfog/elemix-template-formatter-win32-x64': 0.9.6
+
+  '@neuralfog/elemix@0.9.6': {}
+
+  '@parcel/watcher-android-arm64@2.6.0':
+    optional: true
+
+  '@parcel/watcher-darwin-arm64@2.6.0':
+    optional: true
+
+  '@parcel/watcher-darwin-x64@2.6.0':
+    optional: true
+
+  '@parcel/watcher-freebsd-x64@2.6.0':
+    optional: true
+
+  '@parcel/watcher-linux-arm-glibc@2.6.0':
+    optional: true
+
+  '@parcel/watcher-linux-arm-musl@2.6.0':
+    optional: true
+
+  '@parcel/watcher-linux-arm64-glibc@2.6.0':
+    optional: true
+
+  '@parcel/watcher-linux-arm64-musl@2.6.0':
+    optional: true
+
+  '@parcel/watcher-linux-x64-glibc@2.6.0':
+    optional: true
+
+  '@parcel/watcher-linux-x64-musl@2.6.0':
+    optional: true
+
+  '@parcel/watcher-win32-arm64@2.6.0':
+    optional: true
+
+  '@parcel/watcher-win32-x64@2.6.0':
+    optional: true
+
+  '@parcel/watcher@2.6.0':
+    dependencies:
+      detect-libc: 2.1.2
+      is-glob: 4.0.3
+      node-addon-api: 7.1.1
+      picomatch: 4.0.7
+    optionalDependencies:
+      '@parcel/watcher-android-arm64': 2.6.0
+      '@parcel/watcher-darwin-arm64': 2.6.0
+      '@parcel/watcher-darwin-x64': 2.6.0
+      '@parcel/watcher-freebsd-x64': 2.6.0
+      '@parcel/watcher-linux-arm-glibc': 2.6.0
+      '@parcel/watcher-linux-arm-musl': 2.6.0
+      '@parcel/watcher-linux-arm64-glibc': 2.6.0
+      '@parcel/watcher-linux-arm64-musl': 2.6.0
+      '@parcel/watcher-linux-x64-glibc': 2.6.0
+      '@parcel/watcher-linux-x64-musl': 2.6.0
+      '@parcel/watcher-win32-arm64': 2.6.0
+      '@parcel/watcher-win32-x64': 2.6.0
     optional: true
 
   '@typescript/typescript-aix-ppc64@7.0.2':
@@ -308,6 +685,41 @@ snapshots:
 
   '@typescript/typescript-win32-x64@7.0.2':
     optional: true
+
+  chokidar@5.0.0:
+    dependencies:
+      readdirp: 5.1.1
+
+  detect-libc@2.1.2:
+    optional: true
+
+  immutable@5.2.1: {}
+
+  is-extglob@2.1.1:
+    optional: true
+
+  is-glob@4.0.3:
+    dependencies:
+      is-extglob: 2.1.1
+    optional: true
+
+  node-addon-api@7.1.1:
+    optional: true
+
+  picomatch@4.0.7:
+    optional: true
+
+  readdirp@5.1.1: {}
+
+  sass@1.103.1:
+    dependencies:
+      chokidar: 5.0.0
+      immutable: 5.2.1
+      source-map-js: 1.2.2
+    optionalDependencies:
+      '@parcel/watcher': 2.6.0
+
+  source-map-js@1.2.2: {}
 
   typescript@7.0.2:
     optionalDependencies:

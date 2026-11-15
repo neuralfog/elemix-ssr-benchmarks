@@ -8,13 +8,14 @@
         "typecheck": "tsc --noEmit"
     },
     "dependencies": {
-        "@neuralfog/elemix": "link:../../elemix/packages/elemix",
-        "@neuralfog/elemix-ssr": "link:../../elemix/packages/elemix-ssr"
+        "@neuralfog/elemix": "0.9.6",
+        "@neuralfog/elemix-ssr": "0.9.6"
     },
     "devDependencies": {
         "@biomejs/biome": "2.5.3",
-        "@neuralfog/elemix-analyzer": "link:../../elemix/packages/analyzer",
-        "@neuralfog/elemix-template-formatter": "link:../../elemix/packages/formatter",
+        "@neuralfog/elemix-analyzer": "0.9.6",
+        "@neuralfog/elemix-compiler": "0.9.6",
+        "@neuralfog/elemix-template-formatter": "0.9.6",
         "typescript": "7.0.2"
     }
 }
