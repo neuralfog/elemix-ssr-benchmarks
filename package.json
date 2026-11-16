@@ -8,7 +8,7 @@
     "install:nuxt": "cd nuxt && bun install",
     "install:asp": "cd asp && dotnet restore",
     "pack:hydris": "cd ../elemix/packages/hydris && rm -rf artifacts && for p in Hydris Hydris.QuickJs Hydris.Generators Hydris.Build Hydris.Cli; do dotnet pack \"$p/$p.csproj\" -c Release -o ./artifacts || exit 1; done",
-    "install:hydris": "pnpm run pack:hydris && cd hydris && pnpm install && dotnet tool restore",
+    "install:hydris": "pnpm run pack:hydris && cd hydris && pnpm install && dotnet nuget locals all --clear && dotnet tool restore",
     "bootstrap": "pnpm run install:next && pnpm run install:nuxt && pnpm run install:asp && pnpm run install:hydris",
     "clean": "rm -rf nextjs/node_modules nextjs/.next nuxt/node_modules nuxt/.nuxt nuxt/.output hydris/node_modules hydris/bin hydris/obj hydris/ssr hydris/.hydris-build hydris/public/_elemix asp/bin asp/obj ../elemix/packages/hydris/artifacts",
     "reset": "pnpm run clean && pnpm run bootstrap",
