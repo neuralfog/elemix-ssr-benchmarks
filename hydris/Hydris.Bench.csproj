@@ -19,8 +19,8 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Hydris.QuickJs" Version="0.9.6" />
-    <PackageReference Include="Hydris.Generators" Version="0.9.6" />
+    <PackageReference Include="Hydris.QuickJs" Version="0.9.7" />
+    <PackageReference Include="Hydris.Generators" Version="0.9.7" />
   </ItemGroup>
 
 </Project>
