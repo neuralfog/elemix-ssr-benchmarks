@@ -1,4 +1,4 @@
-# elemix SSR Benchmarks
+# elemix/hydris SSR Benchmarks
 
 ![elemix SSR benchmark results](.readme/bench.png)
 
